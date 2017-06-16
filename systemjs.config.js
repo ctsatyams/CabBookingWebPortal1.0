@@ -22,11 +22,8 @@
       '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
       // other libraries
       'rxjs': 'npm:rxjs',
-      'ng2-bootstrap-modal': 'npm:ng2-bootstrap-modal',
-      'primeng': 'node_modules/primeng',
-      'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js',
-      'ng2-auto-complete': 'node_modules/ng2-auto-complete/dist',
-      'ng2-validation': 'node_modules/ng2-validation/bundles',
+    
+      
 
     },
 
@@ -40,30 +37,7 @@
       rxjs: {
         main: 'Rx.js',
         defaultExtension: 'js'
-      },
-      'ng2-bootstrap-modal': {
-        main: 'index.js',
-        defaultExtension: 'js'
-      },
-      'angular2-in-memory-web-api': {
-        main: './index.js',
-        defaultExtension: 'js'
-      },
-      'primeng': {
-        defaultExtension: 'js'
-      },
-      'ng2-auto-complete': {
-        main: 'ng2-auto-complete.umd.js'
-        , defaultExtension: 'js'
-      },
-
-      'ng2-validation': {
-        main: 'ng2-validation.umd.js'
-
-        , defaultExtension: 'js'
       }
-
-
     }
 
   });

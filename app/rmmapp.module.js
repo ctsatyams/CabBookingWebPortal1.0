@@ -13,6 +13,7 @@ var common_1 = require("@angular/common");
 var http_1 = require("@angular/http");
 //module used for routing to maintain the refresh state
 var common_2 = require("@angular/common");
+var forms_2 = require("@angular/forms");
 // rmmapp components & services
 var rmmapp_component_1 = require("./rmmapp.component");
 var rmmapp_route_1 = require("./rmmapp.route");
@@ -36,6 +37,7 @@ AppModule = __decorate([
             forms_1.FormsModule,
             http_1.HttpModule,
             rmmapp_route_1.routing,
+            forms_2.ReactiveFormsModule
         ],
         exports: [],
         declarations: [

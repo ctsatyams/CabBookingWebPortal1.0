@@ -2,14 +2,14 @@ import { Component, ApplicationRef, ChangeDetectorRef, ChangeDetectionStrategy }
 import { Observable } from 'rxjs/Rx';
 import { CabDetailsService } from './cabDetails.service';
 import { Router } from '@angular/router';
-
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 @Component({
     selector: 'dashboard',
     templateUrl: 'app/dashboard/view/dashboard.html'
 })
 
 export class DashboardComponent {
-
+    bookingForm: FormGroup;
     public cabList: any
     name: string;
     mobileNo: string;
@@ -26,7 +26,7 @@ export class DashboardComponent {
     constructor(private router: Router, private changeRef: ChangeDetectorRef, private appRef: ApplicationRef, private cabDetailsService: CabDetailsService) {
         // let LoremIpsum: any;
         // this._lipsum = new LoremIpsum();
-
+        this.validationForm();
 
         setTimeout(function () {
             this.message = null;
@@ -34,7 +34,15 @@ export class DashboardComponent {
         }.bind(this), 1000);
         this.fetch();
     }
+    validationForm() {
 
+        this.bookingForm = new FormGroup({
+            mobileNo: new FormControl('', Validators.compose([Validators.required])),
+            name: new FormControl('', Validators.compose([Validators.required, Validators.pattern("[a-zA-Z]*")])),
+            ctid: new FormControl('', Validators.compose([Validators.required, Validators.pattern("[a-zA-Z0-9]*")])),
+        });
+
+    }
     fetch(): void {
         let param: any = {
             Action: 'GETAll'

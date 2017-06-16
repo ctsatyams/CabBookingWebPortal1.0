@@ -8,6 +8,7 @@ import { Http, HttpModule, RequestOptions, XHRBackend } from '@angular/http';
 //module used for routing to maintain the refresh state
 import { HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@angular/common';
 
+import { ReactiveFormsModule } from '@angular/forms';
 
 // rmmapp components & services
 import { AppComponent } from './rmmapp.component';
@@ -35,7 +36,7 @@ import { BookingDetailsComponent } from './dashboard/bookingDetail.component';
         FormsModule,
         HttpModule,
         routing,
-
+        ReactiveFormsModule
 
     ],
 

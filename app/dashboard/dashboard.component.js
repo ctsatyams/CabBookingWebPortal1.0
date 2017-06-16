@@ -13,10 +13,9 @@ var core_1 = require("@angular/core");
 var Rx_1 = require("rxjs/Rx");
 var cabDetails_service_1 = require("./cabDetails.service");
 var router_1 = require("@angular/router");
+var forms_1 = require("@angular/forms");
 var DashboardComponent = (function () {
     function DashboardComponent(router, changeRef, appRef, cabDetailsService) {
-        // let LoremIpsum: any;
-        // this._lipsum = new LoremIpsum();
         this.router = router;
         this.changeRef = changeRef;
         this.appRef = appRef;
@@ -25,12 +24,22 @@ var DashboardComponent = (function () {
             .interval(1000)
             .map(function () { return new Date(); });
         this.title = "Dashboard";
+        // let LoremIpsum: any;
+        // this._lipsum = new LoremIpsum();
+        this.validationForm();
         setTimeout(function () {
             this.message = null;
             console.log(this.message);
         }.bind(this), 1000);
         this.fetch();
     }
+    DashboardComponent.prototype.validationForm = function () {
+        this.bookingForm = new forms_1.FormGroup({
+            mobileNo: new forms_1.FormControl('', forms_1.Validators.compose([forms_1.Validators.required])),
+            name: new forms_1.FormControl('', forms_1.Validators.compose([forms_1.Validators.required, forms_1.Validators.pattern("[a-zA-Z]*")])),
+            ctid: new forms_1.FormControl('', forms_1.Validators.compose([forms_1.Validators.required, forms_1.Validators.pattern("[a-zA-Z0-9]*")])),
+        });
+    };
     DashboardComponent.prototype.fetch = function () {
         var _this = this;
         var param = {

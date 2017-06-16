@@ -42,30 +42,48 @@
                     <h4 class="modal-title">Booke Seat</h4>
                 </div>
                 <div class="modal-body">
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" novalidate [formGroup]="bookingForm">
                         <div class="form-group">
                             <label class="control-label col-sm-3" for="CTId">CT ID:</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="CTId" id="CTId">
+                                <input type="text" maxlength="6" class="form-control" autocomplete="off" formControlName="ctid" [(ngModel)]="CTId" id="CTId">
+
+                                <div *ngIf="bookingForm.controls.ctid.invalid && bookingForm.controls.ctid.touched">
+                                    <p class="text-danger" *ngIf="bookingForm.controls.ctid.hasError('pattern')"> Please enter correct CitiusTech Employee ID </p>
+                                    <p class="text-danger" *ngIf="bookingForm.controls.ctid.hasError('required')"> CitiusTech Employee ID is required</p>
+                                </div>
+
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-sm-3" for="name">Name:</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="name" id="name">
+                                <input type="text" class="form-control" maxlength="20" autocomplete="off" formControlName="name" [(ngModel)]="name" id="name">
+
+                                <div *ngIf="bookingForm.controls.name.touched && bookingForm.controls.name.invalid">
+                                    <p class="text-danger" *ngIf="bookingForm.controls.name.hasError('pattern')"> Please enter correct name </p>
+                                    <p class="text-danger" *ngIf="bookingForm.controls.name.hasError('required')"> name is required</p>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-sm-3" for="mobile">Mobile no:</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="mobileNo" id="mobile">
+                                <input type="number" class="form-control" ng-minlength="10" 
+                   ng-maxlength="10" autocomplete="off" formControlName="mobileNo" [(ngModel)]="mobileNo"
+                                    id="mobile">
+
+                                    <div *ngIf="bookingForm.controls.mobileNo.invalid && bookingForm.controls.mobileNo.touched">
+                                        <p class="text-danger" *ngIf="bookingForm.controls.mobileNo.hasError('pattern')"> Please enter correct mobile number </p>
+                                        <p class="text-danger" *ngIf="bookingForm.controls.mobileNo.hasError('required')"> Mobile number is required</p>
+                                    </div>
+
                             </div>
                         </div>
-
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-default" data-dismiss="modal" (click)="bookCab()">Submit</button>
+                    <button type="submit" class="btn btn-default" [disabled]="!bookingForm.valid" data-dismiss="modal" (click)="bookCab()">Submit</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </div>

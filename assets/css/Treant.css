@@ -1,0 +1,247 @@
+/*Modal CSS Start*/
+
+ /* The Modal (background) */
+    
+    .modal {
+        display: none;
+        /* Hidden by default */
+        position: fixed;
+        /* Stay in place */
+        z-index: 1;
+        /* Sit on top */
+        padding-top: 20px;
+        /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%;
+        /* Full width */
+        height: 100%;
+        /* Full height */
+        overflow: auto;
+        /* Enable scroll if needed */
+        background-color: rgb(0, 0, 0);
+        /* Fallback color */
+        background-color: rgba(0, 0, 0, 0.4);
+        /* Black w/ opacity */
+    }
+    /* Modal Content */
+    
+    .modal-content {
+        position: relative;
+        background-color: #fefefe;
+        margin: auto;
+        padding: 0;
+        border: 1px solid #888;
+        width: 85%;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        -webkit-animation-name: animatetop;
+        -webkit-animation-duration: 0.4s;
+        animation-name: animatetop;
+        animation-duration: 0.4s;
+    }
+    /* Add Animation */
+    
+    @-webkit-keyframes animatetop {
+        from {
+            top: -300px;
+            opacity: 0
+        }
+        to {
+            top: 0;
+            opacity: 1
+        }
+    }
+    
+    @keyframes animatetop {
+        from {
+            top: -300px;
+            opacity: 0
+        }
+        to {
+            top: 0;
+            opacity: 1
+        }
+    }
+    /* The Close Button */
+    
+    .close {
+        color: white;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+    
+    .close:hover,
+    .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    
+    .modal-header {
+        padding: 2px;
+        background-color: #5cb85c;
+        color: white;
+    }
+    
+    .modal-body {
+        padding: 20px;
+        overflow: auto;
+    }
+    
+    .modal-footer {
+        padding: 2px;
+        background-color: #5cb85c;
+        color: white;
+    }
+
+/*Modal CSS End*/
+
+/* required LIB STYLES */
+/* .Treant se automatski dodaje na svaki chart conatiner */
+.Treant { position: relative; overflow: hidden; padding: 0 !important; }
+.Treant > .node,
+.Treant > .pseudo { position: absolute; display: block; visibility: hidden; }
+.Treant.Treant-loaded .node,
+.Treant.Treant-loaded .pseudo { visibility: visible; }
+.Treant > .pseudo { width: 0; height: 0; border: none; padding: 0; }
+.Treant .collapse-switch { width: 3px; height: 3px; display: block; border: 1px solid black; position: absolute; top: 1px; right: 1px; cursor: pointer; }
+.Treant .collapsed .collapse-switch { background-color: #868DEE; }
+.Treant > .node img {	border: none; float: left; }
+.Treant .collapse-switch {
+    width: 7px;
+    height: 7px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+/* Custom CSS */
+.chart body,
+.chart div,
+.chart dl,
+.chart dt,
+.chart dd,
+.chart ul,
+.chart ol,
+.chart li,
+.chart h1,
+.chart h2,
+.chart h3,
+.chart h4,
+.chart h5,
+.chart h6,
+.chart pre,
+.chart form,
+.chart fieldset,
+.chart input,
+.chart textarea,
+.chart p,
+.chart blockquote,
+.chart th,
+.chart td {
+    margin: 0;
+    padding: 0;
+}
+
+/* optional Container STYLES */
+
+.chart {
+    height: calc(100% - 216px);
+    width: auto;
+    margin: 5px;
+    margin: 5px auto;
+    border: 1px solid #DDD;
+    border-radius: 3px;
+}
+div#tree-preview-all-section {
+    height: 100%;
+}
+.big-tree-container{
+     background: #F0F0F0;
+}
+.chart .node {
+    color: #ccc8c8;
+    border: 1px solid #d6d6d6;
+    /* border: 2px solid #C8C8C8; */
+    border-radius: 5px;
+    background: white;
+    font-family: Segoe UI;
+    font-size: 11px;
+    font-weight: 700;
+    font-style: normal;
+}
+.chart .node p {
+    padding: 5px 10px;
+    width: 220px;
+    height: auto;
+    color: #797979;
+    display: block;
+    text-align: center;
+}
+
+.chart .node p.node-contact {
+  width: 0;
+    height: 0;
+    position: absolute;
+    top: 44px;
+    left: 33px;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-top: 10px solid grey;
+} 
+
+.chart .node.false-condition, .chart .node.true-condition{
+    border:none;
+    background: none;
+    text-transform: uppercase;
+    color: #ccc8c8
+}
+
+.chart .node a.number-of-patients {
+    text-decoration:none;
+}
+
+.tree-container div#tree-preview {
+    width: 95%;
+    height: 70%;
+    background: rgba(242, 242, 242, 1) !important;
+}
+
+.tree-container div#tree-preview-all-section{
+    background: rgba(242, 242, 242, 1) !important;
+}
+/* Start of  Rules Preview Tree CSS*/
+.rule-preview .chart {
+    width: 95%;
+    height: 100%;
+    margin-left:10px;
+    border: none;
+}
+
+.cqm-config-hght{
+    height: 100%;
+}
+.node.meets-performance-condition {
+    border: 1px solid rgb(113, 195, 85);
+}
+.node.meets-performance-condition p{
+    color: rgb(113, 195, 85);
+}
+
+.node.performance-not-met-condition{
+    border: 1px solid rgb(245, 75, 67);
+}
+.node.performance-not-met-condition p{
+    color: rgb(245, 75, 67);
+}
+
+.node.not-eligible-condition {
+    background-color: transparent;
+}
+.node.not-eligible-condition p{
+    color: #b9b9b9;
+}
+
+.node.node-condition-green{
+    border: 1px solid rgb(113, 195, 85);
+}
+/* End of  Rules Preview Tree CSS*/

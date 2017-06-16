@@ -1,0 +1,43 @@
+<div class="task-pan dashboard-pan">
+
+    <div class="col-md-12 dashboard-border release-name">
+
+        <div class="col-md-4 div-delay-status">
+            <span class="delay-status">Cab Booking List </span>
+        </div>
+    </div>
+
+    <div class="col-md-12 dashboard-border dashboard-chart-pan">
+        <div class="panel panel-default" style="margin-top:1% ">
+            <div class="bar-panel-height">
+                <table id="myTable" class="table table-hover table-bordered">
+                    <thead>
+                        <tr>
+
+                            <th>CT ID</th>
+                            <th>Name</th>
+                            <th>Mobile No.</th>
+                            <th>Booking Time</th>
+                            <th><span id="hide"> Action</span></th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor='let CabData of cabList '>
+                            <td>{{CabData.CTID}}</td>
+                            <td>{{CabData.TravellerName}}</td>
+                            <td>{{CabData.MobileNo}}</td>
+                            <td>{{CabData.BookingTime}}</td>
+                            <td><button class="btn btn-sm btn-danger" (click)="cancelBooking(CabData.BookingId)">Cancel</button>                                </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+                <button class="btn btn-sm btn-success glyphicon glyphicon-print pull-right" id="btnPrint" (click)="print()">  Print </button>
+            </div>
+        </div>
+    </div>
+    <div>
+
+    </div>
+</div>

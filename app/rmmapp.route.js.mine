@@ -1,0 +1,119 @@
+"use strict";
+var router_1 = require("@angular/router");
+var rules_library_component_1 = require("./rulesLibrary/rules-library.component");
+var dashboard_component_1 = require("./dashboard/dashboard.component");
+var create_valueset_component_1 = require("./rulesLibrary/valueset/create-valueset.component");
+var conditions_component_1 = require("./rulesLibrary/conditions/conditions.component");
+var rules_component_1 = require("./rulesLibrary/rules/rules.component");
+var rules_import_component_1 = require("./rulesLibrary/rules/rules-import.component");
+var create_rules_component_1 = require("./rulesLibrary/rules/create-rules.component");
+var import_valueset_component_1 = require("./rulesLibrary/valueset/import-valueset.component");
+var test_library_component_1 = require("./testLibrary/test-library.component");
+var test_rules_component_1 = require("./testLibrary/testRules/test-rules.component");
+var test_rule_details_component_1 = require("./testLibrary/testRules/test-rule-details.component");
+// import { TestScenarioComponent } from './testLibrary/testScenario/test-scenario.component';
+// import { TestDataComponent } from './testLibrary/testData/test-data.component';
+var releases_component_1 = require("./releases/releases.component");
+var hScale_rules_component_1 = require("./H-scale/hScale.rules.component");
+var hScale_rules_library_component_1 = require("./H-scale/hScale.rules-library.component");
+var hScale_null_check_configure_component_1 = require("./H-scale/hScale.null-check.configure.component");
+var hScale_null_check_preview_component_1 = require("./H-scale/hScale.null-check.preview.component");
+var hScale_cross_field_configure_component_1 = require("./H-scale/hScale.cross-field.configure.component");
+var hScale_cross_field_preview_component_1 = require("./H-scale/hScale.cross-field.preview.component");
+var hScale_normalization_configure_component_1 = require("./H-scale/hScale.normalization.configure.component");
+var hScale_normalization_preview_component_1 = require("./H-scale/hScale.normalization.preview.component");
+var create_condition_component_1 = require("./rulesLibrary/conditions/create-condition.component");
+var condition_info_component_1 = require("./rulesLibrary/conditions/condition-info.component");
+var valueset_details_component_1 = require("./rulesLibrary/valueset/valueset-details.component");
+var rules_cqm_condition_configurer_component_1 = require("./rulesLibrary/rules/rules-cqm-condition-configurer.component");
+var rules_cqm_basic_component_1 = require("./rulesLibrary/rules/rules-cqm-basic.component");
+var rules_cohort_component_1 = require("./rulesLibrary/rules/rules-cohort.component");
+var test_rule_scenario_list_component_1 = require("./testLibrary/testRules/test-rule-scenario-list.component");
+var test_rule_scenario_details_component_1 = require("./testLibrary/testRules/test-rule-scenario-details.component");
+var test_rule_tree_component_1 = require("./testLibrary/testRules/test-rule-tree.component");
+var test_rule_data_component_1 = require("./testLibrary/testRules/test-rule-data.component");
+var test_rule_patient_list_component_1 = require("./testLibrary/testRules/test-rule-patient-list.component");
+var test_rule_patient_list_data_component_1 = require("./testLibrary/testRules/test-rule-patient-list-data.component");
+var test_rule_execution_flow_component_1 = require("./testLibrary/testRules/test-rule-execution-flow.component");
+var valueset_landing_page_component_1 = require("./rulesLibrary/valueset/valueset-landing-page.component");
+var hScale_attributes_list_component_1 = require("./H-scale/hScale.attributes.list.component");
+var test_scenarios_component_1 = require("./testLibrary/testScenarios/test-scenarios.component");
+var test_data_component_1 = require("./testLibrary/testData/test-data.component");
+var appRoutes = [
+    //{path: '', redirectTo: 'dashboard', pathMatch:"full"},
+    // {path: '', component: RMMAppModulesComponent, children: [
+    //     {path: '', redirectTo: 'dashboard', pathMatch:"full"},
+    //     {path: 'dashboard', component: DashboardComponent},
+    //     {path: 'rules-library', component: RulesLibraryComponent,
+    //         children: [
+    //             {path: '', redirectTo: 'valueset', pathMatch: 'full'},
+    //             {path: 'valueset', component: ValueSetListComponent},
+    //             {path: 'viewallvalueset', component: ViewAllValueSetSearchComponent},
+    //             {path: 'conditions', component: ConditionsComponent},
+    //             {path: 'rules', component: RulesComponent},
+    //         ]
+    //     },
+    //     {path: 'test-library', component: TestLibraryComponent},
+    //     {path: 'releases', component: ReleasesComponent},
+    // ]},
+    { path: '', redirectTo: 'dashboard', pathMatch: "full" },
+    { path: 'dashboard', component: dashboard_component_1.DashboardComponent },
+    {
+        path: 'rules-library', component: rules_library_component_1.RulesLibraryComponent,
+        children: [
+            //{path: 'valueset', redirectTo: 'valueset', pathMatch: 'full'},
+            { path: 'valueset', component: valueset_landing_page_component_1.ValueSetLandingPageComponent },
+            //{ path: 'viewallvalueset', component: ViewAllValueSetSearchComponent },
+            { path: 'conditions', component: conditions_component_1.ConditionsComponent },
+            { path: 'rules', component: rules_component_1.RulesComponent },
+        ]
+    },
+    {
+        path: 'test-library', component: test_library_component_1.TestLibraryComponent,
+        children: [
+            { path: 'test-rules', component: test_rules_component_1.TestRulesComponent },
+        ]
+    },
+    // { path: 'test-library', component: TestLibraryComponent },
+    { path: 'releases', component: releases_component_1.ReleasesComponent },
+    { path: 'data-quality/rules', component: hScale_rules_component_1.HScaleRulesComponent },
+    { path: 'data-quality/attributes-list', component: hScale_attributes_list_component_1.HScaleAttributesListComponent },
+    { path: 'data-quality/rules/pattern/configure-null-check', component: hScale_null_check_configure_component_1.HScaleNullCheckConfigureComponent },
+    { path: 'data-quality/rules/pattern', component: hScale_rules_library_component_1.HScaleRulesLibraryComponent },
+    { path: 'data-quality/rules/pattern/preview-null-check', component: hScale_null_check_preview_component_1.HScaleNullCheckPreviewComponent },
+    { path: 'data-quality/rules/pattern/configure-cross-field', component: hScale_cross_field_configure_component_1.HScaleCrossFieldConfigureComponent },
+    { path: 'data-quality/rules/pattern/preview-cross-field', component: hScale_cross_field_preview_component_1.HScaleCrossFieldPreviewComponent },
+    { path: 'data-quality/rules/pattern/configure-normalization', component: hScale_normalization_configure_component_1.HScaleNormalizationConfigureComponent },
+    { path: 'data-quality/rules/pattern/configure-normalization/:attrGender', component: hScale_normalization_configure_component_1.HScaleNormalizationConfigureComponent },
+    { path: 'data-quality/rules/pattern/preview-normalization', component: hScale_normalization_preview_component_1.HScaleNormalizationPreviewComponent },
+    { path: 'rules-library/create-valueset', component: create_valueset_component_1.CreateValueSetComponent },
+    { path: 'rules-library/import-valueset', component: import_valueset_component_1.ValueSetComponent },
+    { path: 'rules-library/create-condition', component: create_condition_component_1.CreateConditionComponent },
+    { path: 'rules-library/rules/create-rules', component: create_rules_component_1.CreateRulesComponent },
+    { path: 'rules-library/rules/create-rules-cqm', component: rules_cqm_basic_component_1.RulesCQMBasicComponent },
+    { path: 'rules-library/rules/create-rules-cohort', component: rules_cohort_component_1.RulesCohortComponent },
+    { path: 'rules-library/rules/import-rules', component: rules_import_component_1.RulesImportComponent },
+    { path: 'rules-library/condition-details/:conditionId', component: condition_info_component_1.ConditionInfoComponent },
+    { path: 'rules-library/valueset-details/:valueSetId', component: valueset_details_component_1.ViewAllValueSetDetailComponent },
+    { path: 'rules-library/condition-details/:conditionId', component: condition_info_component_1.ConditionInfoComponent },
+    { path: 'rules-library/cqm', component: rules_cqm_condition_configurer_component_1.RulesCqmConditionConfigurerComponent },
+    { path: 'rules-library/rule-details/:ruleId', component: rules_cqm_basic_component_1.RulesCQMBasicComponent },
+    { path: 'rules-library/edit-rules-cohort/:ruleId', component: rules_cohort_component_1.RulesCohortComponent },
+    {
+        path: 'test-library/test-rules/test-rule-details/:testRuleId/:ruleName', component: test_rule_details_component_1.TestRuleDetails,
+        children: [
+            { path: 'scenario-list', component: test_rule_scenario_list_component_1.TestRuleScenarioListComponent },
+            { path: 'scenario-details/:scenarioId', component: test_rule_scenario_details_component_1.TestRuleScenarioDetailsComponent },
+            { path: 'test-rule-tree/:testRuleId', component: test_rule_tree_component_1.TestRuleTreeComponent },
+            { path: 'test-rule-data/:patientInformation/:scenarioId/:patientId', component: test_rule_data_component_1.TestRuleDataComponent },
+        ]
+    },
+    { path: 'test-library/test-scenarios', component: test_scenarios_component_1.TestScenariosComponent },
+    { path: 'test-library/test-data', component: test_data_component_1.TestDataComponent },
+    { path: 'test-library/test-rules/test-rule-details/:testRuleId/:ruleName/patient-list', component: test_rule_patient_list_component_1.TestRulePatientListComponent },
+    { path: 'test-library/test-rules/test-rule-details/:testRuleId/:ruleName/patient-list/:updated', component: test_rule_patient_list_component_1.TestRulePatientListComponent },
+    { path: 'test-library/test-rules/test-rule-details/:testRuleId/:ruleName/patient-list-data/:patientInformation/:patientId', component: test_rule_patient_list_data_component_1.TestRulePatientListDataComponent },
+    { path: 'test-library/test-rules/test-rule-execution-flow/:testRuleId', component: test_rule_execution_flow_component_1.TestRuleExecutionFlowComponent },
+];
+exports.routing = router_1.RouterModule.forRoot(appRoutes, { useHash: true });
+//# sourceMappingURL=rmmapp.route.js.map

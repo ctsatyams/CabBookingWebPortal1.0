@@ -1,0 +1,30 @@
+<div  class="main-container" [ngClass]="{mainContainerHghtChange:showMenuBarNFooter(this.router.url)}">
+      <div class="header">
+            <div class="title col-md-12">
+                  <img *ngIf="checkLogo(this.router.url)" [src]="productLogo" [class]="classLogo">
+           
+                  <a class="user-name pull-right"> Satyam soni</a>
+                  <a class="user-pic glyphicon glyphicon-user pull-right"></a>
+                  <a class="other-icons-size fa fa-question pull-right"></a>
+                  <a class="other-icons-size glyphicon glyphicon-bell pull-right"></a>
+                  <a class="other-icons-size glyphicon glyphicon-envelope pull-right inbox-mrgn"></a>
+            </div>
+            <div class="subheader" *ngIf="showMenuBarNFooter(this.router.url)">
+                  <nav>
+                        <div class="dropdown">
+                              <button class="dropbtn" [routerLinkActive]="['is-active']" [routerLink]="['/dashboard']">Cab booking</button>
+                        </div>
+                  </nav>
+            </div>
+            <div class="clearboth"></div>
+      </div>
+      <div [ngClass]="{articleHeight: showMenuBarNFooter(this.router.url)}" class="main-article">
+            <router-outlet></router-outlet>
+      </div>
+      <div class="col-md-12" [ngClass]="{rmmFootr: showMenuBarNFooter(this.router.url)}" *ngIf="showMenuBarNFooter(this.router.url)">
+            <span>© 2016 Copyrights. CitiusTech</span>
+            <img class="citiusTech-logo pull-right" src="assets/images/CitiusTech_logo.png">
+      </div>
+        <div>
+ 
+    </div>

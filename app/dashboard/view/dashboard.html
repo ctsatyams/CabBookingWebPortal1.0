@@ -14,16 +14,16 @@
                     <div class="col-md-3">
                         <div class="panel panel-primary">
                             <div class="panel-heading"> <span>Time : {{cab.CabTime}}</span>
-                                <span style="padding-left:15px">Direction : </span>
+                                <span style="padding-left:15px">Route : </span>
                                 <span style="border: 1px solid;    padding: 3px;">{{cab.FromStation}} - {{cab.ToStation}}</span>
                             </div>
                             <div class="panel-body">
-                                <p>avalabile seat:{{cab.availableSeat}}</p>
+                                <p>Available seat:{{cab.availableSeat}}</p>
                                 <p>Total seat:{{cab.Seat}}</p>
                             </div>
                             <div class="panel-footer">
-                                <button class="btn btn-sm" (click)="storeCabId(cab.Id)" data-toggle="modal" data-target="#myModal">Book seat</button>
-                                <button class="btn btn-sm pull-right" (click)="getDetail(cab.Id)"> Details</button>
+                                <button class="btn btn-sm" (click)="storeCabId(cab.Id,cab.CabTime,cab.FromStation,cab.ToStation)" data-toggle="modal" data-target="#myModal">Book seat</button>
+                                <button class="btn btn-sm pull-right" (click)="getDetail(cab.Id,cab.CabTime,cab.FromStation,cab.ToStation)"> Details</button>
                             </div>
                         </div>
                     </div>

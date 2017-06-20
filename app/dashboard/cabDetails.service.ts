@@ -5,19 +5,21 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class CabDetailsService {
-    cabId:number=null;
+    cabId: number = null;
+    cabTime: string;
+    route:string;
     /**
     * this is used for extract Data in json formate for GET Methode of rest service  call
     * if rest return sucess true we forword response to component class
     * other wise if any error then we forword error message to component class
     */
-    HostName: string ='http://cabdataapi.azurewebsites.net';
+    HostName: string = 'http://localhost:5000';//'http://cabdataapi.azurewebsites.net';
     private extractData(res: Response) {
 
         let body = res.json();
 
-        return body.recordsets|| {};
-       
+        return body.recordsets || {};
+
     }
 
     /**this is used for Handle error ,if any error occur during rest service call this method will handle*/
@@ -58,7 +60,7 @@ export class CabDetailsService {
             .catch(this.handleError);
     };
     getAllCabList(data: any): Observable<any[]> {
- 
+
         let url: string = this.HostName + "/getAllBooking";
         let params = new URLSearchParams();
 
@@ -74,8 +76,8 @@ export class CabDetailsService {
             .map(this.extractData)
             .catch(this.handleError);
     };
-        getDetailById(data: any): Observable<any[]> {
-       console.log(data);
+    getDetailById(data: any): Observable<any[]> {
+        console.log(data);
         let url: string = this.HostName + "/getDetailById";
         let params = new URLSearchParams();
 
@@ -86,7 +88,7 @@ export class CabDetailsService {
         let options = new RequestOptions({
             search: params
         });
- 
+
         //let body = JSON.stringify(param);
         return this.http.get(url, options)
             .map(this.extractData)
@@ -96,6 +98,17 @@ export class CabDetailsService {
         let url: string = this.HostName + "/bookingList";
 
         return this.http.get(url)
+            .map(this.extractData)
+            .catch(this.handleError);
+    };
+    addDriver(data): Observable<any[]> {
+
+        let url: string = this.HostName + "/addDriver";
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let Option = new RequestOptions({ headers: headers });
+        let body = JSON.stringify(data);
+        console.log(body);
+        return this.http.post(url, body, { headers: headers })
             .map(this.extractData)
             .catch(this.handleError);
     };

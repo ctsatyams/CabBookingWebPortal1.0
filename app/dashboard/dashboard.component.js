@@ -24,14 +24,8 @@ var DashboardComponent = (function () {
             .interval(1000)
             .map(function () { return new Date(); });
         this.title = "Dashboard";
-        // let LoremIpsum: any;
-        // this._lipsum = new LoremIpsum();
-        this.validationForm();
-        setTimeout(function () {
-            this.message = null;
-            console.log(this.message);
-        }.bind(this), 1000);
         this.fetch();
+        this.validationForm();
     }
     DashboardComponent.prototype.validationForm = function () {
         this.bookingForm = new forms_1.FormGroup({
@@ -45,14 +39,20 @@ var DashboardComponent = (function () {
         var param = {
             Action: 'GETAll'
         };
-        this.cabDetailsService.getAllCabList(param).subscribe(function (cabTimeList) { _this.cabList = cabTimeList[0], console.log(_this.cabList[0]); }, function (error) { console.error(error); });
+        this.cabDetailsService.getAllCabList(param).subscribe(function (cabTimeList) { _this.cabList = cabTimeList[0], console.log(_this.cabList); }, function (error) { console.error(error); });
     };
-    DashboardComponent.prototype.storeCabId = function (cabId) {
+    DashboardComponent.prototype.storeCabId = function (cabId, cabTime, FromStation, ToStation) {
         this.cabDetailsService.cabId = cabId;
+        this.cabDetailsService.cabTime = cabTime;
+        this.cabDetailsService.route = (FromStation + " - " + ToStation);
+        console.log(this.cabDetailsService.route);
     };
-    DashboardComponent.prototype.getDetail = function (cabId) {
+    DashboardComponent.prototype.getDetail = function (cabId, cabTime, FromStation, ToStation) {
         this.cabDetailsService.cabId = cabId;
+        this.cabDetailsService.cabTime = cabTime;
         this.router.navigate(['/bookingDetail']);
+        this.cabDetailsService.route = (FromStation + " - " + ToStation);
+        console.log(this.cabDetailsService.route);
         //this.router.navigateByUrl('/dashboard');
     };
     DashboardComponent.prototype.bookCab = function () {

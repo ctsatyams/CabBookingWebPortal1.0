@@ -26,7 +26,7 @@ var CabDetailsService = (function () {
         * if rest return sucess true we forword response to component class
         * other wise if any error then we forword error message to component class
         */
-        this.HostName = 'http://cabdataapi.azurewebsites.net';
+        this.HostName = 'http://localhost:5000'; //'http://cabdataapi.azurewebsites.net';
     }
     CabDetailsService.prototype.extractData = function (res) {
         var body = res.json();
@@ -97,6 +97,17 @@ var CabDetailsService = (function () {
     CabDetailsService.prototype.getCabBookingList = function () {
         var url = this.HostName + "/bookingList";
         return this.http.get(url)
+            .map(this.extractData)
+            .catch(this.handleError);
+    };
+    ;
+    CabDetailsService.prototype.addDriver = function (data) {
+        var url = this.HostName + "/addDriver";
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        var Option = new http_1.RequestOptions({ headers: headers });
+        var body = JSON.stringify(data);
+        console.log(body);
+        return this.http.post(url, body, { headers: headers })
             .map(this.extractData)
             .catch(this.handleError);
     };

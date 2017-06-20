@@ -13,6 +13,7 @@ var core_1 = require("@angular/core");
 var Rx_1 = require("rxjs/Rx");
 var cabDetails_service_1 = require("./cabDetails.service");
 var router_1 = require("@angular/router");
+var forms_1 = require("@angular/forms");
 var BookingDetailsComponent = (function () {
     function BookingDetailsComponent(router, changeRef, appRef, cabDetailsService) {
         this.router = router;
@@ -20,13 +21,37 @@ var BookingDetailsComponent = (function () {
         this.appRef = appRef;
         this.cabDetailsService = cabDetailsService;
         this.fetch();
+        this.date = new Date();
+        this.cabTime = this.cabDetailsService.cabTime;
+        this.route = this.cabDetailsService.route;
+        this.validationForm();
     }
+    BookingDetailsComponent.prototype.validationForm = function () {
+        this.driverForm = new forms_1.FormGroup({
+            mobileNo: new forms_1.FormControl('', forms_1.Validators.compose([forms_1.Validators.required])),
+            name: new forms_1.FormControl('', forms_1.Validators.compose([forms_1.Validators.required, forms_1.Validators.pattern("[a-zA-Z]*")])),
+            vehicleNo: new forms_1.FormControl('', forms_1.Validators.compose([forms_1.Validators.required, forms_1.Validators.pattern("[a-zA-Z0-9]*")]))
+        });
+    };
+    BookingDetailsComponent.prototype.addDriverDetail = function () {
+        var _this = this;
+        var data = {};
+        data.id = this.cabDetailsService.cabId;
+        data.driverName = this.name;
+        data.mobileNo = this.mobileNo;
+        data.vehicleNo = this.vehicleNo;
+        console.log(data);
+        this.cabDetailsService.addDriver(data).subscribe(function (message) { _this.message = message, _this.fetch(); }, function (error) { console.error(error); });
+    };
     BookingDetailsComponent.prototype.fetch = function () {
         var _this = this;
         var param = {
             id: this.cabDetailsService.cabId
         };
-        this.cabDetailsService.getDetailById(param).subscribe(function (cabTimeList) { _this.cabList = cabTimeList[0], console.log(_this.cabList[0]); }, function (error) { console.error(error); });
+        this.cabDetailsService.getDetailById(param).subscribe(function (cabTimeList) {
+            _this.cabList = cabTimeList[0], _this.driver = cabTimeList[1][0], _this.name = _this.driver.DriverName,
+                _this.vehicleNo = _this.driver.VehicleNo, _this.mobileNo = _this.driver.Mobile, console.log(cabTimeList);
+        }, function (error) { console.error(error); });
     };
     BookingDetailsComponent.prototype.storeCabId = function (cabId) {
         this.cabDetailsService.cabId = cabId;

@@ -24,15 +24,8 @@ export class DashboardComponent {
     public message: any;//"detected!";
 
     constructor(private router: Router, private changeRef: ChangeDetectorRef, private appRef: ApplicationRef, private cabDetailsService: CabDetailsService) {
-        // let LoremIpsum: any;
-        // this._lipsum = new LoremIpsum();
-        this.validationForm();
-
-        setTimeout(function () {
-            this.message = null;
-            console.log(this.message);
-        }.bind(this), 1000);
         this.fetch();
+        this.validationForm();
     }
     validationForm() {
 
@@ -43,22 +36,30 @@ export class DashboardComponent {
         });
 
     }
+
     fetch(): void {
         let param: any = {
             Action: 'GETAll'
         }
 
         this.cabDetailsService.getAllCabList(param).subscribe(
-            cabTimeList => { this.cabList = cabTimeList[0], console.log(this.cabList[0]) },
+            cabTimeList => { this.cabList = cabTimeList[0], console.log(this.cabList) },
             error => { console.error(error) });
     }
 
-    public storeCabId(cabId: any): void {
+    public storeCabId(cabId: number, cabTime: string,FromStation:string,ToStation:string): void {
         this.cabDetailsService.cabId = cabId;
+        this.cabDetailsService.cabTime = cabTime;
+        this.cabDetailsService.route = (FromStation +" - "+ToStation);
+        console.log(this.cabDetailsService.route);
     }
-    public getDetail(cabId: any): void {
+
+    public getDetail(cabId: any, cabTime: any,FromStation:string,ToStation:string): void {
         this.cabDetailsService.cabId = cabId;
+        this.cabDetailsService.cabTime = cabTime;
         this.router.navigate(['/bookingDetail']);
+             this.cabDetailsService.route = (FromStation +" - "+ToStation);
+        console.log(this.cabDetailsService.route);
         //this.router.navigateByUrl('/dashboard');
     }
 

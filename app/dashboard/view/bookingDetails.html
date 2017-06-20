@@ -93,12 +93,12 @@
                     <div class="form-group">
                         <label class="control-label col-sm-3" for="vehicleNo">vehicle No:</label>
                         <div class="col-sm-9">
-                            <input type="text" maxlength="6" class="form-control" autocomplete="off" formControlName="vehicleNo" [(ngModel)]="vehicleNo"
+                            <input type="text" maxlength="8" class="form-control" autocomplete="off" formControlName="vehicleNo" [(ngModel)]="vehicleNo"
                                 id="vehicleNo">
 
                                 <div *ngIf="driverForm.controls.vehicleNo.invalid && driverForm.controls.vehicleNo.touched">
-                                    <p class="text-danger" *ngIf="driverForm.controls.vehicleNo.hasError('pattern')"> Please enter correct CitiusTech Employee ID </p>
-                                    <p class="text-danger" *ngIf="driverForm.controls.vehicleNo.hasError('required')"> CitiusTech Employee ID is required</p>
+                                    <p class="text-danger" *ngIf="driverForm.controls.vehicleNo.hasError('pattern')"> Please enter correct vehicleNo </p>
+                                    <p class="text-danger" *ngIf="driverForm.controls.vehicleNo.hasError('required')"> vehicle Number is required</p>
                                 </div>
 
                         </div>

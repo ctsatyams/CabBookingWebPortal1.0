@@ -28,9 +28,9 @@ var BookingDetailsComponent = (function () {
     }
     BookingDetailsComponent.prototype.validationForm = function () {
         this.driverForm = new forms_1.FormGroup({
-            mobileNo: new forms_1.FormControl('', forms_1.Validators.compose([forms_1.Validators.required])),
+            mobileNo: new forms_1.FormControl('', forms_1.Validators.compose([forms_1.Validators.required, forms_1.Validators.pattern("^([+][9][1]|[9][1]|[0]){0,1}([7-9]{1})([0-9]{9})$")])),
             name: new forms_1.FormControl('', forms_1.Validators.compose([forms_1.Validators.required, forms_1.Validators.pattern("[a-zA-Z]*")])),
-            vehicleNo: new forms_1.FormControl('', forms_1.Validators.compose([forms_1.Validators.required, forms_1.Validators.pattern("[a-zA-Z0-9]*")]))
+            vehicleNo: new forms_1.FormControl('', forms_1.Validators.compose([forms_1.Validators.required, forms_1.Validators.pattern("[a-zA-Z0-9-]*")]))
         });
     };
     BookingDetailsComponent.prototype.addDriverDetail = function () {

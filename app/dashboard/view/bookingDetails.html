@@ -93,7 +93,7 @@
                     <div class="form-group">
                         <label class="control-label col-sm-3" for="vehicleNo">vehicle No:</label>
                         <div class="col-sm-9">
-                            <input type="text" maxlength="8" class="form-control" autocomplete="off" formControlName="vehicleNo" [(ngModel)]="vehicleNo"
+                            <input type="text" maxlength="10" class="form-control" autocomplete="off" placeholder="MH04-0690" formControlName="vehicleNo" [(ngModel)]="vehicleNo"
                                 id="vehicleNo">
 
                                 <div *ngIf="driverForm.controls.vehicleNo.invalid && driverForm.controls.vehicleNo.touched">

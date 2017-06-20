@@ -36,9 +36,9 @@ driver:any;
     validationForm() {
 
         this.driverForm = new FormGroup({
-            mobileNo: new FormControl('', Validators.compose([Validators.required])),
+            mobileNo: new FormControl('', Validators.compose([Validators.required,Validators.pattern("^([+][9][1]|[9][1]|[0]){0,1}([7-9]{1})([0-9]{9})$")])),
             name: new FormControl('', Validators.compose([Validators.required, Validators.pattern("[a-zA-Z]*")])),
-            vehicleNo: new FormControl('', Validators.compose([Validators.required, Validators.pattern("[a-zA-Z0-9]*")]))
+            vehicleNo: new FormControl('', Validators.compose([Validators.required, Validators.pattern("[a-zA-Z0-9-]*")]))
         });
     }
     addDriverDetail() {

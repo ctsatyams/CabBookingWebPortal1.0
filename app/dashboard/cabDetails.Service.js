@@ -26,7 +26,7 @@ var CabDetailsService = (function () {
         * if rest return sucess true we forword response to component class
         * other wise if any error then we forword error message to component class
         */
-        this.HostName = 'http://localhost:5000'; //'http://cabdataapi.azurewebsites.net';
+        this.HostName = 'http://cabdataapi.azurewebsites.net';
     }
     CabDetailsService.prototype.extractData = function (res) {
         var body = res.json();

@@ -13,7 +13,7 @@ export class CabDetailsService {
     * if rest return sucess true we forword response to component class
     * other wise if any error then we forword error message to component class
     */
-    HostName: string = 'http://localhost:5000';//'http://cabdataapi.azurewebsites.net';
+    HostName: string = 'http://cabdataapi.azurewebsites.net';
     private extractData(res: Response) {
 
         let body = res.json();

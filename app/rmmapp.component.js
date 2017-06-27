@@ -14,6 +14,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
+//import { AuthService } from './dashboard/services/auth.service'
 var AppComponent = (function () {
     function AppComponent(router, route) {
         this.router = router;

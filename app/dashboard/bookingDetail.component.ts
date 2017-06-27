@@ -62,7 +62,7 @@ driver:any;
             id: this.cabDetailsService.cabId
         }
         this.cabDetailsService.getDetailById(param).subscribe(
-            cabTimeList => { this.cabList = cabTimeList[0],this.driver=cabTimeList[1][0],  this.name=this.driver.DriverName,
+            cabTimeList => { this.cabList = cabTimeList[0],this.driver=cabTimeList[2][0],  this.name=this.driver.DriverName,
                 this.vehicleNo=this.driver.VehicleNo,this.mobileNo=this.driver.Mobile ,console.log(cabTimeList) },
             error => { console.error(error) });
     }

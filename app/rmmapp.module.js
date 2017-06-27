@@ -21,9 +21,11 @@ var rmmapp_route_1 = require("./rmmapp.route");
 var EventHttpService_1 = require("./services/EventHttpService");
 var api_service_1 = require("./services/api.service");
 // import { DashboardModule } from './rmmapp.dashboard.module';
+var angular2_useful_swiper_1 = require("angular2-useful-swiper");
 var dashboard_component_1 = require("./dashboard/dashboard.component");
 var cabDetails_service_1 = require("./dashboard/cabDetails.service");
 var bookingDetail_component_1 = require("./dashboard/bookingDetail.component");
+//import { AuthService } from './dashboard/services/auth.service'
 var AppModule = (function () {
     function AppModule() {
     }
@@ -37,7 +39,8 @@ AppModule = __decorate([
             forms_1.FormsModule,
             http_1.HttpModule,
             rmmapp_route_1.routing,
-            forms_2.ReactiveFormsModule
+            forms_2.ReactiveFormsModule,
+            angular2_useful_swiper_1.SwiperModule
         ],
         exports: [],
         declarations: [
@@ -49,6 +52,7 @@ AppModule = __decorate([
         providers: [
             api_service_1.ApiService,
             cabDetails_service_1.CabDetailsService,
+            //AuthService,
             { provide: common_2.LocationStrategy, useClass: common_2.HashLocationStrategy },
             {
                 provide: http_1.Http,

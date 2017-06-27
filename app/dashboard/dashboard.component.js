@@ -20,6 +20,15 @@ var DashboardComponent = (function () {
         this.changeRef = changeRef;
         this.appRef = appRef;
         this.cabDetailsService = cabDetailsService;
+        this.config = {
+            //pagination: '.swiper-pagination',
+            nextButton: '.swiper-button-next',
+            prevButton: '.swiper-button-prev',
+            slidesPerView: 4,
+            centeredSlides: true,
+            paginationClickable: true,
+            spaceBetween: 30,
+        };
         this.clock = Rx_1.Observable
             .interval(1000)
             .map(function () { return new Date(); });
@@ -39,7 +48,7 @@ var DashboardComponent = (function () {
         var param = {
             Action: 'GETAll'
         };
-        this.cabDetailsService.getAllCabList(param).subscribe(function (cabTimeList) { _this.cabList = cabTimeList[0], console.log(_this.cabList); }, function (error) { console.error(error); });
+        this.cabDetailsService.getAllCabList(param).subscribe(function (cabTimeList) { _this.cabListMT = cabTimeList[0], _this.cabListTM = cabTimeList[1]; }, function (error) { console.error(error); });
     };
     DashboardComponent.prototype.storeCabId = function (cabId, cabTime, FromStation, ToStation) {
         this.cabDetailsService.cabId = cabId;
@@ -58,10 +67,12 @@ var DashboardComponent = (function () {
     DashboardComponent.prototype.bookCab = function () {
         var _this = this;
         var cabData = {};
+        //console.log(this.travelDay);
         cabData.id = this.cabDetailsService.cabId;
         cabData.name = this.name;
         cabData.mobileNo = this.mobileNo;
         cabData.ctid = this.CTId;
+        cabData.travelDay = this.travelDay;
         cabData.actionAfterRequest = 'GETAll';
         console.log(cabData);
         this.cabDetailsService.CabBooking(cabData).subscribe(function (message) { _this.message = message, _this.fetch(); }, function (error) { console.error(error); });

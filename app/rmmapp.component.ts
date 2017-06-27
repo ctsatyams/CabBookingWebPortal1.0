@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-
+//import { AuthService } from './dashboard/services/auth.service'
 
 @Component({
     selector: 'rmmapp',
@@ -10,11 +10,12 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 export class AppComponent {
     private title: string = "Rules Management Module";
-    private productLogo : string="assets/images/H-Scale_logo.jpg";
+    private productLogo: string = "assets/images/H-Scale_logo.jpg";
     private classLogo: string;
     private urlWithoutMenuNFooter: string[] = [];
 
     constructor( @Inject(Router) private router: Router,
+        
         @Inject(ActivatedRoute) private route: Router) {
 
     }
@@ -44,21 +45,21 @@ export class AppComponent {
         }
     }
 
-    checkTitle(url: string){
-        if(url.indexOf('data-quality') > 0){
+    checkTitle(url: string) {
+        if (url.indexOf('data-quality') > 0) {
             this.title = "Data Quality Module";
-        }else{
+        } else {
             this.title = "Natural language processing";
         }
         return true;
     }
 
 
-    checkLogo(url: string){
-        
-            this.productLogo = "assets/images/CitiusTech_logo.png";
-            this.classLogo ="bi_logo";
-       
+    checkLogo(url: string) {
+
+        this.productLogo = "assets/images/CitiusTech_logo.png";
+        this.classLogo = "bi_logo";
+
         return true;
     }
 

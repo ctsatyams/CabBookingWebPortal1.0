@@ -3498,6 +3498,7 @@ input.ui-cell-editor.ui-state-highlight.ng-valid.ng-dirty.ng-touched{
     padding: 4px 0px 5px 0px;
     font-family: Segoe UI;
     font-size: 16px;
+    margin-bottom: 10px;
 }
 .relese-css{
     border-right: solid 1px #d8caca;

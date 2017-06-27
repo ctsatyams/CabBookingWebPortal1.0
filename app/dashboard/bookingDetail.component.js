@@ -49,7 +49,7 @@ var BookingDetailsComponent = (function () {
             id: this.cabDetailsService.cabId
         };
         this.cabDetailsService.getDetailById(param).subscribe(function (cabTimeList) {
-            _this.cabList = cabTimeList[0], _this.driver = cabTimeList[1][0], _this.name = _this.driver.DriverName,
+            _this.cabList = cabTimeList[0], _this.driver = cabTimeList[2][0], _this.name = _this.driver.DriverName,
                 _this.vehicleNo = _this.driver.VehicleNo, _this.mobileNo = _this.driver.Mobile, console.log(cabTimeList);
         }, function (error) { console.error(error); });
     };

@@ -23,10 +23,12 @@ import { ApiService } from './services/api.service'
 
 // import { DashboardModule } from './rmmapp.dashboard.module';
 
-
+ 
+import { SwiperModule } from 'angular2-useful-swiper';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CabDetailsService } from './dashboard/cabDetails.service';
 import { BookingDetailsComponent } from './dashboard/bookingDetail.component';
+//import { AuthService } from './dashboard/services/auth.service'
 
 @NgModule({
 
@@ -36,8 +38,8 @@ import { BookingDetailsComponent } from './dashboard/bookingDetail.component';
         FormsModule,
         HttpModule,
         routing,
-        ReactiveFormsModule
-
+        ReactiveFormsModule,
+SwiperModule
     ],
 
     exports: [
@@ -56,6 +58,7 @@ import { BookingDetailsComponent } from './dashboard/bookingDetail.component';
     providers: [
         ApiService,
         CabDetailsService,
+        //AuthService,
         { provide: LocationStrategy, useClass: HashLocationStrategy },
         {
             provide: Http,

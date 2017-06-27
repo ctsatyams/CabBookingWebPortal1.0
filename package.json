@@ -23,6 +23,8 @@
     "@angular/router": "3.4.1",
     "@angular/upgrade": "2.4.1",
     "angular2-busy": "2.0.4",
+    "angular2-useful-swiper": "^4.0.5",
+    "auth0-js": "^8.8.0",
     "bootstrap": "^3.3.7",
     "core-js": "^2.4.1",
     "ng2-slim-loading-bar": "^4.0.0",

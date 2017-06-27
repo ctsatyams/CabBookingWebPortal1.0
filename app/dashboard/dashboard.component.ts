@@ -10,10 +10,23 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 
 export class DashboardComponent {
     bookingForm: FormGroup;
-    public cabList: any
+    public cabListMT: any
+    public cabListTM: any
+    public config: Object = {
+        //pagination: '.swiper-pagination',
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+        slidesPerView: 4,
+        centeredSlides: true,
+        paginationClickable: true,
+        spaceBetween: 30,
+    };
+
+
     name: string;
     mobileNo: string;
     CTId: string;
+    travelDay:string;
     clock = Observable
         .interval(1000)
         .map(() => new Date());
@@ -25,7 +38,9 @@ export class DashboardComponent {
 
     constructor(private router: Router, private changeRef: ChangeDetectorRef, private appRef: ApplicationRef, private cabDetailsService: CabDetailsService) {
         this.fetch();
+
         this.validationForm();
+
     }
     validationForm() {
 
@@ -43,22 +58,22 @@ export class DashboardComponent {
         }
 
         this.cabDetailsService.getAllCabList(param).subscribe(
-            cabTimeList => { this.cabList = cabTimeList[0], console.log(this.cabList) },
+            cabTimeList => { this.cabListMT = cabTimeList[0], this.cabListTM = cabTimeList[1] },
             error => { console.error(error) });
     }
 
-    public storeCabId(cabId: number, cabTime: string,FromStation:string,ToStation:string): void {
+    public storeCabId(cabId: number, cabTime: string, FromStation: string, ToStation: string): void {
         this.cabDetailsService.cabId = cabId;
         this.cabDetailsService.cabTime = cabTime;
-        this.cabDetailsService.route = (FromStation +" - "+ToStation);
+        this.cabDetailsService.route = (FromStation + " - " + ToStation);
         console.log(this.cabDetailsService.route);
     }
 
-    public getDetail(cabId: any, cabTime: any,FromStation:string,ToStation:string): void {
+    public getDetail(cabId: any, cabTime: any, FromStation: string, ToStation: string): void {
         this.cabDetailsService.cabId = cabId;
         this.cabDetailsService.cabTime = cabTime;
         this.router.navigate(['/bookingDetail']);
-             this.cabDetailsService.route = (FromStation +" - "+ToStation);
+        this.cabDetailsService.route = (FromStation + " - " + ToStation);
         console.log(this.cabDetailsService.route);
         //this.router.navigateByUrl('/dashboard');
     }
@@ -66,12 +81,13 @@ export class DashboardComponent {
 
     bookCab() {
         let cabData: any = {};
-
+        //console.log(this.travelDay);
         cabData.id = this.cabDetailsService.cabId;
         cabData.name = this.name;
         cabData.mobileNo = this.mobileNo;
         cabData.ctid = this.CTId;
-        cabData.actionAfterRequest = 'GETAll'
+        cabData.travelDay=this.travelDay;
+        cabData.actionAfterRequest = 'GETAll';
         console.log(cabData);
         this.cabDetailsService.CabBooking(cabData).subscribe(
             message => { this.message = message, this.fetch() },

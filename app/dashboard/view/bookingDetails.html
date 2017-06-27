@@ -44,7 +44,9 @@
                             <th>CT ID</th>
                             <th>Name</th>
                             <th>Mobile No.</th>
-                            <th>Booking Time</th>
+                            <th>Booking DateTime</th>
+                            <th>Journey Date</th>
+                            <th>Booking Status</th>
                             <th><span id="hide"> Action</span></th>
 
                         </tr>
@@ -54,7 +56,10 @@
                             <td>{{CabData.CTID}}</td>
                             <td>{{CabData.TravellerName}}</td>
                             <td>{{CabData.MobileNo}}</td>
-                            <td>{{CabData.BookingTime}}</td>
+                            <td>{{CabData.Date}}</td>
+                            <td>{{CabData.JourneyDate}}</td>
+                            <td> <span *ngIf="CabData.waiting > 0" >WL- {{CabData.waiting}}</span>
+                            <span *ngIf="CabData.waiting == 0" > Confirm</span> </td>
                             <td><button class="btn btn-sm btn-danger" (click)="cancelBooking(CabData.BookingId)">Cancel</button>                                </td>
                         </tr>
 
